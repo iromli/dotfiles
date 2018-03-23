@@ -18,7 +18,7 @@ if [[ -n "$PS1" ]]; then
     if [[ -s $HOME/.pyenv/bin/pyenv ]]; then
         export PATH=$PATH:$HOME/.pyenv/bin
         eval "$(pyenv init -)"
-        pyenv virtualenvwrapper >&/dev/null
+        pyenv virtualenvwrapper_lazy >&/dev/null
     fi
 
     if [[ -s $HOME/.python-startup.py ]]; then
