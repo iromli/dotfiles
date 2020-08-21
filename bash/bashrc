@@ -17,7 +17,7 @@ if [[ -n "$PS1" ]]; then
 
     if [[ -s $HOME/.pyenv/bin/pyenv ]]; then
         export PATH=$PATH:$HOME/.pyenv/bin
-        # export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
+        export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
         eval "$(pyenv init -)"
         pyenv virtualenvwrapper_lazy >&/dev/null
     fi
@@ -28,8 +28,8 @@ if [[ -n "$PS1" ]]; then
 
     # Go
     if [[ -s $HOME/.goenv/bin/goenv ]]; then
-        export PATH=$PATH:$HOME/.goenv/bin:$HOME/.gobin
-        export GOPATH=$HOME/.gopath
+        export PATH=$PATH:$HOME/.goenv/bin  # :$HOME/.gobin
+        export GO111MODULE=auto
         eval "$(goenv init -)"
     fi
 
@@ -57,4 +57,14 @@ if [[ -n "$PS1" ]]; then
     if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
     # The next line enables shell command completion for gcloud.
     if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
+
+    # Nim
+    if [[ -s $HOME/.nimble/bin/nim ]]; then
+        export PATH=$PATH:$HOME/.nimble/bin
+    fi
+
+    #
+    if [[ -s $HOME/.sdkman/bin/sdkman-init.sh ]]; then
+        source "$HOME/.sdkman/bin/sdkman-init.sh"
+    fi
 fi

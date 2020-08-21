@@ -203,6 +203,11 @@ dock-rm-exited() {
     docker rm -f $(docker ps -qf status=exited)
 }
 
+dock-get-ip() {
+    : ${1:?"container name or ID is required"}
+    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $1
+}
+
 fix-ssh-access() {
     : ${1:?"IP or hostname is required"}
     ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${1}
