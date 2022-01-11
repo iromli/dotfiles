@@ -23,10 +23,9 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-
-#==============================================================================
+#============
 # Completions
-#==============================================================================
+#============
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -40,10 +39,9 @@ for lib in $BASH_HOME/completions/*.sh; do
     source $lib
 done
 
-
-#==============================================================================
+#========
 # Prompts
-#==============================================================================
+#========
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -81,10 +79,9 @@ esac
 [[ -f $BASH_HOME/themes/$BASH_THEME.sh ]] && \
     source $BASH_HOME/themes/$BASH_THEME.sh
 
-
-#==============================================================================
+#========
 # Aliases
-#==============================================================================
+#========
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -133,38 +130,14 @@ alias dirsize='du -sh'
 
 alias hgrep='history|grep '
 
-
-#==============================================================================
+#==========
 # Functions
-#==============================================================================
+#==========
 
 # create directory and go the newly created directory
 mkcd() {
     : ${1:?"A non-empty argument is required"}
     mkdir -p "$1" && cd "$1"
-}
-
-# go to upper directory
-up() {
-    num=$1
-
-    if [[ ! -n $num ]]; then
-        num=1
-    elif [[ ! "$num" =~ ^[0-9]+$ ]]; then
-        echo "error: a positive number is required" && return 0
-    fi
-
-    if [[ "$num" -lt 2 ]]; then
-        cd ../ && return 0
-    fi
-
-    while [[ "$num" -ne 0 ]]; do
-        if [[ "$PWD" == "/" ]]; then
-            break
-        fi
-        cd ../
-        num=$(( $num - 1 ))
-    done
 }
 
 # get architecture name
@@ -177,20 +150,9 @@ os-name() {
     echo "`kernel_name` `head -1 /etc/issue`" | sed 's/\\.//g'
 }
 
-mkgoprj() {
-    : ${1:?"project name is required"}
-    : ${2:?"package name is required"}
-
-    if [ ! -d "${GOPATH}/src/${2}" ]; then
-        mkdir -p "${GOPATH}/src/${2}"
-    fi
-
-    ln -s "${GOPATH}/src/${2}" "${PWD}/${1}"
-}
-
 # remove all untagged docker images
 dock-rmi-untagged() {
-    docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
+    docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 }
 
 # remove all containers (forced)
@@ -211,4 +173,8 @@ dock-get-ip() {
 fix-ssh-access() {
     : ${1:?"IP or hostname is required"}
     ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${1}
+}
+
+clean-pyc() {
+    find . -name "*.pyc" -exec rm -f {} \;
 }

@@ -63,8 +63,12 @@ if [[ -n "$PS1" ]]; then
         export PATH=$PATH:$HOME/.nimble/bin
     fi
 
-    #
-    if [[ -s $HOME/.sdkman/bin/sdkman-init.sh ]]; then
-        source "$HOME/.sdkman/bin/sdkman-init.sh"
-    fi
+    # krew
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+    # codeql
+    export PATH="$HOME/.codeql/codeql:$PATH"
+
+    # docker
+    export DOCKER_BUILDKIT=1
 fi
