@@ -1,5 +1,4 @@
-install: install-bash install-postgres \
-         install-python install-tmux install-vim
+install: install-bash install-python install-tmux install-vim
 
 install-bash:
 	rm -rf ~/.bash.d
@@ -10,10 +9,6 @@ install-bash:
 	ln -s `pwd`/bash/bash_logout ~/.bash_logout
 	ln -s `pwd`/bash/bash_profile ~/.bash_profile
 	ln -s `pwd`/bash/bashrc ~/.bashrc
-
-install-postgres:
-	rm -rf ~/.psqlrc
-	ln -s `pwd`/postgres/psqlrc ~/.psqlrc
 
 install-python:
 	rm -rf ~/.ipython
