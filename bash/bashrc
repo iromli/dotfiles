@@ -41,12 +41,6 @@ if [[ -n "$PS1" ]]; then
         eval "$(nodenv init -)"
     fi
 
-    # gopsi
-    if [[ -s $HOME/.gopsi/bin/gopsi ]]; then
-        export PATH=$PATH:$HOME/.gopsi/bin
-        eval "$(gopsi init -)"
-    fi
-
     # Ruby
     if [[ -s $HOME/.rbenv/bin/rbenv ]]; then
         export PATH=$PATH:$HOME/.rbenv/bin
@@ -60,11 +54,6 @@ if [[ -n "$PS1" ]]; then
     # The next line enables shell command completion for gcloud.
     if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
-    # Nim
-    if [[ -s $HOME/.nimble/bin/nim ]]; then
-        export PATH=$PATH:$HOME/.nimble/bin
-    fi
-
     # krew
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -73,4 +62,9 @@ if [[ -n "$PS1" ]]; then
 
     # docker
     export DOCKER_BUILDKIT=1
+
+    complete -C /home/iromli/.local/bin/terraform terraform
+
+    # kotlin
+    export PATH="/opt/kotlinc/bin:$PATH"
 fi
