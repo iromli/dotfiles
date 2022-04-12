@@ -15,36 +15,17 @@ if [[ -n "$PS1" ]]; then
     export IPYTHONDIR=$HOME/.ipython
     export WORKON_HOME=$HOME/.virtualenv
 
-    if [[ -s $HOME/.pyenv/bin/pyenv ]]; then
-        export PYENV_ROOT="$HOME/.pyenv"
-        export PATH="$PYENV_ROOT/bin:$PATH"
-        export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
-        eval "$(pyenv init --path)"
-        eval "$(pyenv init -)"
-        pyenv virtualenvwrapper_lazy >&/dev/null
-    fi
+    # if [[ -s $HOME/.pyenv/bin/pyenv ]]; then
+    #     export PYENV_ROOT="$HOME/.pyenv"
+    #     export PATH="$PYENV_ROOT/bin:$PATH"
+    #     export VIRTUALENVWRAPPER_PYTHON=$HOME/.pyenv/shims/python
+    #     eval "$(pyenv init --path)"
+    #     eval "$(pyenv init -)"
+    #     pyenv virtualenvwrapper_lazy >&/dev/null
+    # fi
 
     if [[ -s $HOME/.python-startup.py ]]; then
         export PYTHONSTARTUP=$HOME/.python-startup.py
-    fi
-
-    # Go
-    if [[ -s $HOME/.goenv/bin/goenv ]]; then
-        export PATH=$PATH:$HOME/.goenv/bin  # :$HOME/.gobin
-        export GO111MODULE=auto
-        eval "$(goenv init -)"
-    fi
-
-    # NodeJS
-    if [[ -s $HOME/.nodenv/bin/nodenv ]]; then
-        export PATH=$PATH:$HOME/.nodenv/bin
-        eval "$(nodenv init -)"
-    fi
-
-    # Ruby
-    if [[ -s $HOME/.rbenv/bin/rbenv ]]; then
-        export PATH=$PATH:$HOME/.rbenv/bin
-        eval "$(rbenv init -)"
     fi
 
     source $BASH_HOME/init.sh
@@ -63,8 +44,8 @@ if [[ -n "$PS1" ]]; then
     # docker
     export DOCKER_BUILDKIT=1
 
-    complete -C /home/iromli/.local/bin/terraform terraform
+    # complete -C /home/iromli/.local/bin/terraform terraform
 
-    # kotlin
-    export PATH="/opt/kotlinc/bin:$PATH"
+    . $HOME/.asdf/asdf.sh
+    . $HOME/.asdf/completions/asdf.bash
 fi
