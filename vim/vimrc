@@ -43,7 +43,6 @@ NeoBundle 'mxw/vim-jsx'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'vim-scripts/po.vim'
 NeoBundle 'cespare/vim-toml'
-NeoBundle 'zah/nim.vim/'
 NeoBundle 'udalov/kotlin-vim'
 NeoBundle 'hashivim/vim-terraform'
 
