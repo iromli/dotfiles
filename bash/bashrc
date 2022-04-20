@@ -41,6 +41,8 @@ if [[ -n "$PS1" ]]; then
     # codeql
     export PATH="$HOME/.codeql/codeql:$PATH"
 
+    export PATH="$HOME/.gobin:$PATH"
+
     # docker
     export DOCKER_BUILDKIT=1
 
