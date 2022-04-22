@@ -12,14 +12,11 @@ CLR_MAGENTA="[35m"  # Magenta
 CLR_CYAN="[36m"     # Cyan
 CLR_WHITE="[37m"    # White
 
-# VCS prompt color
-function __equator.vcprompt() {
-    if [[ ! -z `which vcprompt` ]]; then
-        `which vcprompt` -f $'\e[37m(\e[35m%n\e[37m:\e[33m%b\e[32m%m%u\e[37m)'
-    fi
-}
+export VCP_PREFIX=" :: "
+export VCP_NAME="{white}({value}) "
+export VCP_SEPARATOR=" | "
 
-EQ_PROMPT='\e${TXT_BOLD}\e${CLR_GREEN}\w `__equator.vcprompt` \e${RESET_ATTR}'
+EQ_PROMPT='\e${TXT_BOLD}\e${CLR_GREEN}\w`vcprompt`'
 
 # Set the title
 case "$TERM" in
