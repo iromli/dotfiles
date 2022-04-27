@@ -12,20 +12,21 @@ CLR_MAGENTA="[35m"  # Magenta
 CLR_CYAN="[36m"     # Cyan
 CLR_WHITE="[37m"    # White
 
-export VCP_PREFIX=" :: "
+export VCP_PREFIX=" "
 export VCP_NAME="{white}({value}) "
+export VCP_BRANCH="{blue}{value}{reset}"
 export VCP_SEPARATOR=" | "
+export VCP_CHANGED="{yellow}↻ {value}"
+export VCP_BEHIND=" ⇣ {value}"
+export VCP_AHEAD=" ⇡ {value}"
+export VCP_STAGED="{blue}✚ {value}"
+export VCP_CONFLICT="{red}✖︎ {value}"
+export VCP_UNTRACKED="{magenta}…{value}"
+export VCP_OPERATION="{red}{value}{reset}"
+export VCP_CLEAN="{green}✔︎"
+export VCP_SUFFIX="{reset}"
 
-EQ_PROMPT='\e${TXT_BOLD}\e${CLR_GREEN}\w`vcprompt`'
+EQ_PROMPT='\e${TXT_BOLD}\e${CLR_CYAN}\u@\h\e${CLR_WHITE}:\e${CLR_GREEN}\w`vcprompt`'
 
-# Set the title
-case "$TERM" in
-    xterm*|rxvt*)
-        TITLEBAR="\[\e]0;\u@\h:\w\a\]"
-    ;;
-    *)
-    ;;
-esac
-
-PS1="${TITLEBAR}${EQ_PROMPT}
+PS1="${EQ_PROMPT}
 » "
