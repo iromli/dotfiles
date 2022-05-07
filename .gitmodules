@@ -20,18 +20,12 @@
 [submodule "vim/pack/ext/start/nerdtree"]
 	path = vim/pack/ext/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/pack/ext/start/supertab"]
-	path = vim/pack/ext/start/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "vim/pack/ext/start/ctrlp.vim"]
 	path = vim/pack/ext/start/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "vim/pack/ext/start/vim-markdown"]
 	path = vim/pack/ext/start/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule "vim/pack/ext/start/ultisnips"]
-	path = vim/pack/ext/start/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
 [submodule "vim/pack/ext/start/vim-javascript"]
 	path = vim/pack/ext/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
@@ -125,3 +119,6 @@
 [submodule "vim/pack/ext/start/ale"]
 	path = vim/pack/ext/start/ale
 	url = https://github.com/dense-analysis/ale.git
+[submodule "vim/pack/ext/start/coc.nvim"]
+	path = vim/pack/ext/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git

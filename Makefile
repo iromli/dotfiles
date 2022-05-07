@@ -32,3 +32,4 @@ install-vim:
 	ln -sf `pwd`/vim/UltiSnips ~/.vim/
 	ln -sf `pwd`/vim/pack ~/.vim/
 	ln -sf `pwd`/vim/vimrc ~/.vimrc
+	ln -sf `pwd`/vim/coc-settings.json ~/.vim/coc-settings.json

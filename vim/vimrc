@@ -101,13 +101,6 @@ set pastetoggle=<F9>
 " Turn off search highlighting
 nmap <leader>/ :nohl<CR>
 
-" --- SuperTab
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabNoCompleteAfter = ['^', '\s', ',']
-let g:SuperTabContextDiscoverDiscovery = ['&completefunc:<c-x><c-u>', '&omnifunc:<c-x><c-o>']
-
 " --- Autopairs
 let g:AutoPairsShortcutFastWrap = '<C-f>'
 let g:AutoPairsMapCR = 0
@@ -137,13 +130,6 @@ nnoremap <silent> <F6> :Complexity<CR>
 autocmd FileType nginx set commentstring=#\ %s
 autocmd FileType dockerfile set commentstring=#\ %s
 autocmd FileType ldif set commentstring=#\ %s
-
-" --- Ultisnips
-let g:ultisnips_python_style = 'sphinx'
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-let g:UltiSnipsDontReverseSearchPath="1"
 
 " --- TagBar
 " toggle TagBar with F4
@@ -247,26 +233,72 @@ let g:rustfmt_autosave = 1
 let g:zig_fmt_autosave = 1
 
 " --- ALE
-let g:ale_completion_enabled = 1
-set omnifunc=ale#completion#OmniFunc
+let g:ale_disable_lsp = 1
+
+" let g:ale_completion_enabled = 1
+" let g:ale_completion_autoimport = 0
+" set omnifunc=ale#completion#OmniFunc
 
 let g:ale_linters = {
 \   'python': ['flake8', 'bandit'],
-\   'rust': ['analyzer'],
 \}
 
 let g:ale_python_flake8_options = '--ignore=E501'
 
-" let g:airline#extensions#ale#enabled = 1
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+
+let g:airline#extensions#ale#enabled = 1
 
 let g:ale_echo_msg_error_str = 'ERROR'
 let g:ale_echo_msg_warning_str = 'WARNING'
+let g:ale_echo_msg_info_str = 'INFO'
 let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
 
-" let g:ale_open_list = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+
+" " let g:ale_open_list = 1
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" --- coc.nvim
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" " Use K to show documentation in preview window.
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" function! s:show_documentation()
+"   if CocAction('hasProvider', 'hover')
+"     call CocActionAsync('doHover')
+"   else
+"     call feedkeys('K', 'in')
+"   endif
+" endfunction
+
+let g:go_def_mapping_enabled = 0
+
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 " Last thing to do with
 " " NeoBundleCheck
