@@ -2,7 +2,7 @@ set nocompatible
 " set rtp+=~/.vim/bundle/neobundle.vim/
 
 " call neobundle#rc(expand('~/.vimbundles'))
-set rtp+=~/.vim/bundle/vwilight/
+" set rtp+=~/.vim/bundle/vwilight/
 
 " " Bundles
 " NeoBundleFetch 'Shougo/neobundle.vim'
@@ -18,7 +18,7 @@ endif
 set t_Co=256
 color vwilight
 
-" let mapleader = ','
+let mapleader = ','
 
 " display options
 set title
