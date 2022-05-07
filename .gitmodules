@@ -1,3 +1,124 @@
-[submodule "vim/vim/bundle/neobundle.vim"]
-	path = vim/vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim.git
+
+[submodule "vim/pack/ext/start/gleam.vim"]
+	path = vim/pack/ext/start/gleam.vim
+	url = https://github.com/gleam-lang/gleam.vim.git
+[submodule "vim/pack/ext/start/vim-airline"]
+	path = vim/pack/ext/start/vim-airline
+	url = https://github.com/bling/vim-airline.git
+[submodule "vim/pack/ext/start/vim-fugitive"]
+	path = vim/pack/ext/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/pack/ext/start/rainbow_parentheses.vim"]
+	path = vim/pack/ext/start/rainbow_parentheses.vim
+	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule "vim/pack/ext/start/vim-commentary"]
+	path = vim/pack/ext/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/pack/ext/start/vim-mundo"]
+	path = vim/pack/ext/start/vim-mundo
+	url = https://github.com/simnalamburt/vim-mundo.git
+[submodule "vim/pack/ext/start/nerdtree"]
+	path = vim/pack/ext/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/pack/ext/start/supertab"]
+	path = vim/pack/ext/start/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "vim/pack/ext/start/ctrlp.vim"]
+	path = vim/pack/ext/start/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim/pack/ext/start/vim-markdown"]
+	path = vim/pack/ext/start/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git
+[submodule "vim/pack/ext/start/ultisnips"]
+	path = vim/pack/ext/start/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "vim/pack/ext/start/vim-javascript"]
+	path = vim/pack/ext/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/pack/ext/start/html5.vim"]
+	path = vim/pack/ext/start/html5.vim
+	url = https://github.com/othree/html5.vim.git
+[submodule "vim/pack/ext/start/nginx.vim"]
+	path = vim/pack/ext/start/nginx.vim
+	url = https://github.com/chr4/nginx.vim.git
+[submodule "vim/pack/ext/start/vim-easymotion"]
+	path = vim/pack/ext/start/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "vim/pack/ext/start/auto-pairs"]
+	path = vim/pack/ext/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "vim/pack/ext/start/tabular"]
+	path = vim/pack/ext/start/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/pack/ext/start/clam.vim"]
+	path = vim/pack/ext/start/clam.vim
+	url = https://github.com/sjl/clam.vim.git
+[submodule "vim/pack/ext/start/Recover.vim"]
+	path = vim/pack/ext/start/Recover.vim
+	url = https://github.com/chrisbra/Recover.vim.git
+[submodule "vim/pack/ext/start/vim-haml"]
+	path = vim/pack/ext/start/vim-haml
+	url = https://github.com/tpope/vim-haml.git
+[submodule "vim/pack/ext/start/emmet-vim"]
+	path = vim/pack/ext/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim/pack/ext/start/vim-jinja"]
+	path = vim/pack/ext/start/vim-jinja
+	url = https://github.com/mitsuhiko/vim-jinja.git
+[submodule "vim/pack/ext/start/vim-rst"]
+	path = vim/pack/ext/start/vim-rst
+	url = https://github.com/mitsuhiko/vim-rst.git
+[submodule "vim/pack/ext/start/dockerfile.vim"]
+	path = vim/pack/ext/start/dockerfile.vim
+	url = https://github.com/ekalinin/dockerfile.vim.git
+[submodule "vim/pack/ext/start/javacomplete"]
+	path = vim/pack/ext/start/javacomplete
+	url = https://github.com/vim-scripts/javacomplete.git
+[submodule "vim/pack/ext/start/tagbar"]
+	path = vim/pack/ext/start/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "vim/pack/ext/start/ack.vim"]
+	path = vim/pack/ext/start/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/pack/ext/start/indentLine"]
+	path = vim/pack/ext/start/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
+[submodule "vim/pack/ext/start/vim-scratch"]
+	path = vim/pack/ext/start/vim-scratch
+	url = https://github.com/kana/vim-scratch.git
+[submodule "vim/pack/ext/start/vim-go"]
+	path = vim/pack/ext/start/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "vim/pack/ext/start/rust.vim"]
+	path = vim/pack/ext/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "vim/pack/ext/start/vim-stringify"]
+	path = vim/pack/ext/start/vim-stringify
+	url = https://github.com/29decibel/vim-stringify.git
+[submodule "vim/pack/ext/start/vim-expand-region"]
+	path = vim/pack/ext/start/vim-expand-region
+	url = https://github.com/terryma/vim-expand-region.git
+[submodule "vim/pack/ext/start/vim-jsx"]
+	path = vim/pack/ext/start/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
+[submodule "vim/pack/ext/start/vim-fireplace"]
+	path = vim/pack/ext/start/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace.git
+[submodule "vim/pack/ext/start/po.vim"]
+	path = vim/pack/ext/start/po.vim
+	url = https://github.com/vim-scripts/po.vim.git
+[submodule "vim/pack/ext/start/vim-toml"]
+	path = vim/pack/ext/start/vim-toml
+	url = https://github.com/cespare/vim-toml.git
+[submodule "vim/pack/ext/start/kotlin-vim"]
+	path = vim/pack/ext/start/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim.git
+[submodule "vim/pack/ext/start/vim-terraform"]
+	path = vim/pack/ext/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
+[submodule "vim/pack/ext/start/zig.vim"]
+	path = vim/pack/ext/start/zig.vim
+	url = https://github.com/ziglang/zig.vim.git
+[submodule "vim/pack/ext/start/odin.vim"]
+	path = vim/pack/ext/start/odin.vim
+	url = https://github.com/Tetralux/odin.vim.git

@@ -25,7 +25,10 @@ install-tmux:
 
 install-vim:
 	rm -rf ~/.vim
+	mkdir -p ~/.vim
 	rm -rf ~/.vimrc
 	git submodule update
-	ln -s `pwd`/vim/vim ~/.vim
-	ln -s `pwd`/vim/vimrc ~/.vimrc
+	ln -sf `pwd`/vim/bundle ~/.vim/
+	ln -sf `pwd`/vim/UltiSnips ~/.vim/
+	ln -sf `pwd`/vim/pack ~/.vim/
+	ln -sf `pwd`/vim/vimrc ~/.vimrc

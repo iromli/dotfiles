@@ -1,6 +1,7 @@
 *.log
 *~
 *.pyc
+*.swp
 python/ipython/profile_default/log/
 python/ipython/profile_default/pid/
 python/ipython/profile_default/security/
