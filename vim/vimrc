@@ -2,7 +2,6 @@ set nocompatible
 " set rtp+=~/.vim/bundle/neobundle.vim/
 
 " call neobundle#rc(expand('~/.vimbundles'))
-" set rtp+=~/.vim/bundle/vwilight/
 
 " " Bundles
 " NeoBundleFetch 'Shougo/neobundle.vim'
@@ -75,7 +74,7 @@ au BufRead,BufNewFile *.json set ft=javascript
 au BufRead,BufNewFile *.jinja2 set ft=jinja
 
 " ensure Go and Makefile always use tabs instead of spaces
-au FileType make,go  setl noexpandtab
+au FileType make,go,java  setl noexpandtab
 
 " set 2-spaces indentation for Ruby, Coffeescript, and YAML files
 au FileType coffee,yaml,vim,ruby  setl softtabstop=2 shiftwidth=2 tabstop=2
@@ -90,22 +89,6 @@ set nofoldenable
 " trailing whitespace
 autocmd BufWritePre * :silent! %s/\s\+$//e
 autocmd BufWritePre * :silent! %s#\($\n\)\+\%$##
-
-" Enable omni completion. (Ctrl-X Ctrl-O)
-autocmd FileType html,markdown setl ofu=htmlcomplete#CompleteTags
-autocmd FileType javascript setl ofu=javascriptcomplete#CompleteJS
-autocmd FileType python setl ofu=pythoncomplete#Complete
-autocmd FileType css set ofu=csscomplete#CompleteCSS
-autocmd FileType java set ofu=javacomplete#Complete
-
-" use syntax complete if nothing else available
-if has('autocmd') && exists('+omnifunc')
-  autocmd Filetype *
-    \ if &omnifunc == "" |
-    \   setl ofu=syntaxcomplete#Complete |
-    \ endif
-endif
-set completeopt=longest,menu
 
 " Highlight the overflow text
 " http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
@@ -243,18 +226,18 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " vim-go
-let g:go_bin_path = expand('~/.gobin')
-let g:go_fmt_command = "goimports"
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap gd <Plug>(go-def)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" let g:go_bin_path = expand('~/.gobin')
+" let g:go_fmt_command = "goimports"
+" au FileType go nmap <Leader>gd <Plug>(go-doc)
+" au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+" au FileType go nmap <leader>r <Plug>(go-run)
+" au FileType go nmap <leader>b <Plug>(go-build)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
+" au FileType go nmap gd <Plug>(go-def)
+" au FileType go nmap <Leader>ds <Plug>(go-def-split)
+" au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+" au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 " Rust
 au FileType rust match OverLength /\%99v.\+/
@@ -263,5 +246,27 @@ let g:rustfmt_autosave = 1
 " Zig
 let g:zig_fmt_autosave = 1
 
-" " Last thing to do with
+" --- ALE
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+
+let g:ale_linters = {
+\   'python': ['flake8', 'bandit'],
+\   'rust': ['analyzer'],
+\}
+
+let g:ale_python_flake8_options = '--ignore=E501'
+
+" let g:airline#extensions#ale#enabled = 1
+
+let g:ale_echo_msg_error_str = 'ERROR'
+let g:ale_echo_msg_warning_str = 'WARNING'
+let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
+
+" let g:ale_open_list = 1
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Last thing to do with
 " " NeoBundleCheck

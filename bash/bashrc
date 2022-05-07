@@ -46,7 +46,7 @@ if [[ -n "$PS1" ]]; then
     # docker
     export DOCKER_BUILDKIT=1
 
-    export PATH="/opt/ziglang:/opt/odinlang:$PATH"
+    export PATH="/opt/zig:/opt/odin:$PATH"
 
     # complete -C /home/iromli/.local/bin/terraform terraform
 

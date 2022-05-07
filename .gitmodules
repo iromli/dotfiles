@@ -122,3 +122,6 @@
 [submodule "vim/pack/ext/start/odin.vim"]
 	path = vim/pack/ext/start/odin.vim
 	url = https://github.com/Tetralux/odin.vim.git
+[submodule "vim/pack/ext/start/ale"]
+	path = vim/pack/ext/start/ale
+	url = https://github.com/dense-analysis/ale.git
