@@ -50,6 +50,7 @@ call dein#add('ziglang/zig.vim')
 call dein#add('Tetralux/odin.vim')
 call dein#add('elixir-editors/vim-elixir')
 call dein#add('dense-analysis/ale')
+call dein#add('neoclide/coc.nvim', {'merged': 0})
 
 call dein#end()
 
