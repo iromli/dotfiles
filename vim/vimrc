@@ -1,10 +1,69 @@
-set nocompatible
-" set rtp+=~/.vim/bundle/neobundle.vim/
+" Be iMproved
+if &compatible
+  set nocompatible
+endif
 
-" call neobundle#rc(expand('~/.vimbundles'))
+" set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
 
-" " Bundles
-" NeoBundleFetch 'Shougo/neobundle.vim'
+" " Required
+" call dein#begin('~/.dein')
+
+" " Let dein manage dein
+" call dein#add('~/.dein/repos/github.com/Shougo/dein.vim')
+
+" call dein#add('airblade/vim-gitgutter')
+" call dein#add('MaxMEllon/vim-jsx-pretty')
+" call dein#add('leafgarland/typescript-vim')
+
+" " Required
+" call dein#end()
+
+call jetpack#begin()
+
+call jetpack#add('ryanoasis/vim-devicons')
+call jetpack#add('bling/vim-airline')
+call jetpack#add('tpope/vim-fugitive')
+call jetpack#add('kien/rainbow_parentheses.vim')
+call jetpack#add('tpope/vim-commentary')
+call jetpack#add('simnalamburt/vim-mundo')
+call jetpack#add('scrooloose/nerdtree')
+call jetpack#add('ctrlpvim/ctrlp.vim')
+call jetpack#add('Lokaltog/vim-easymotion')
+call jetpack#add('jiangmiao/auto-pairs')
+call jetpack#add('godlygeek/tabular')
+call jetpack#add('sjl/clam.vim')
+call jetpack#add('chrisbra/Recover.vim')
+call jetpack#add('majutsushi/tagbar')
+call jetpack#add('mileszs/ack.vim')
+call jetpack#add('Yggdroot/indentLine')
+call jetpack#add('kana/vim-scratch')
+call jetpack#add('29decibel/vim-stringify')
+call jetpack#add('terryma/vim-expand-region')
+call jetpack#add('tpope/vim-fireplace')
+
+call jetpack#add('tpope/vim-haml')
+call jetpack#add('mattn/emmet-vim')
+call jetpack#add('mitsuhiko/vim-jinja')
+call jetpack#add('mitsuhiko/vim-rst')
+call jetpack#add('ekalinin/dockerfile.vim')
+call jetpack#add('vim-scripts/po.vim')
+call jetpack#add('cespare/vim-toml')
+call jetpack#add('hashivim/vim-terraform')
+call jetpack#add('fatih/vim-go')
+call jetpack#add('rust-lang/rust.vim')
+call jetpack#add('pangloss/vim-javascript')
+call jetpack#add('othree/html5.vim')
+call jetpack#add('chr4/nginx.vim')
+call jetpack#add('tpope/vim-markdown')
+call jetpack#add('udalov/kotlin-vim')
+call jetpack#add('ziglang/zig.vim')
+call jetpack#add('Tetralux/odin.vim')
+call jetpack#add('gleam-lang/gleam.vim')
+
+call jetpack#add('dense-analysis/ale')
+call jetpack#add('neoclide/coc.nvim')
+
+call jetpack#end()
 
 filetype plugin indent on
 syntax on
@@ -299,6 +358,3 @@ let g:go_def_mapping_enabled = 0
 " nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
 " nmap <silent> gr <Plug>(coc-references)
-
-" Last thing to do with
-" " NeoBundleCheck
