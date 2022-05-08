@@ -8,4 +8,6 @@
     "zig.startUpMessage": true,
     "zig.path": "zls",
     "zig.debugLog": false,
+
+    "elixirLS.dialyzerEnabled": false,
 }
