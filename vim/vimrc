@@ -4,6 +4,9 @@ if &compatible
 endif
 
 " --- jetpack
+
+set rtp+=~/.vim/pack/ext/start/vim-jetpack
+
 call jetpack#begin()
 
 call jetpack#add('airblade/vim-gitgutter')
