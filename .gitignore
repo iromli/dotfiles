@@ -7,8 +7,6 @@ python/ipython/profile_default/pid/
 python/ipython/profile_default/security/
 python/ipython/profile_default/*.sqlite
 python/ipython/profile_default/db
-vim/bundle/*
 vim/netrwhist
-!vim/vim/bundle/neobundle.vim
 python/ipython/profile_default/static/
-vim/pack
+vim/pack/jetpack

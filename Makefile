@@ -24,11 +24,11 @@ install-tmux:
 	ln -s `pwd`/tmux/tmux.conf ~/.tmux.conf
 
 install-vim:
-	rm -rf ~/.vim
-	mkdir -p ~/.vim
+	mkdir -p ~/.vim/autoload
+	rm -rf ~/.vim/pack ~/.vim/UltiSnips
 	rm -rf ~/.vimrc
 	git submodule update
-	ln -sf `pwd`/vim/bundle ~/.vim/
+	ln -sf `pwd`/vim/pack/ext/start/vim-jetpack/autoload/jetpack.vim ~/.vim/autoload/jetpack.vim
 	ln -sf `pwd`/vim/UltiSnips ~/.vim/
 	ln -sf `pwd`/vim/pack ~/.vim/
 	ln -sf `pwd`/vim/vimrc ~/.vimrc

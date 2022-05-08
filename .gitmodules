@@ -1,1 +1,7 @@
 
+[submodule "vim/pack/ext/start/vim-jetpack"]
+	path = vim/pack/ext/start/vim-jetpack
+	url = https://github.com/tani/vim-jetpack.git
+[submodule "vim/pack/ext/start/coc.nvim"]
+	path = vim/pack/ext/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git

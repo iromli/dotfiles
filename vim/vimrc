@@ -3,23 +3,10 @@ if &compatible
   set nocompatible
 endif
 
-" set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
-
-" " Required
-" call dein#begin('~/.dein')
-
-" " Let dein manage dein
-" call dein#add('~/.dein/repos/github.com/Shougo/dein.vim')
-
-" call dein#add('airblade/vim-gitgutter')
-" call dein#add('MaxMEllon/vim-jsx-pretty')
-" call dein#add('leafgarland/typescript-vim')
-
-" " Required
-" call dein#end()
-
+" --- jetpack
 call jetpack#begin()
 
+call jetpack#add('airblade/vim-gitgutter')
 call jetpack#add('ryanoasis/vim-devicons')
 call jetpack#add('bling/vim-airline')
 call jetpack#add('tpope/vim-fugitive')
@@ -59,9 +46,9 @@ call jetpack#add('udalov/kotlin-vim')
 call jetpack#add('ziglang/zig.vim')
 call jetpack#add('Tetralux/odin.vim')
 call jetpack#add('gleam-lang/gleam.vim')
-
+call jetpack#add('MaxMEllon/vim-jsx-pretty')
+call jetpack#add('leafgarland/typescript-vim')
 call jetpack#add('dense-analysis/ale')
-call jetpack#add('neoclide/coc.nvim')
 
 call jetpack#end()
 
