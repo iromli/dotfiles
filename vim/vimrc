@@ -21,12 +21,9 @@ call dein#add('Lokaltog/vim-easymotion')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('godlygeek/tabular')
 call dein#add('chrisbra/Recover.vim')
-call dein#add('majutsushi/tagbar')
 call dein#add('mileszs/ack.vim')
 call dein#add('Yggdroot/indentLine')
 call dein#add('kana/vim-scratch')
-call dein#add('29decibel/vim-stringify')
-call dein#add('terryma/vim-expand-region')
 
 call dein#add('tpope/vim-haml')
 call dein#add('mattn/emmet-vim')
@@ -157,23 +154,16 @@ let g:airline_theme='dark'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:ttimeoutlen=50
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 
 " --- Emmet
 let g:user_emmet_leader_key='<C-e>'
-
-" --- Clam
-let g:clam_winpos='botright'
 
 " --- Commentary
 autocmd FileType nginx set commentstring=#\ %s
 autocmd FileType dockerfile set commentstring=#\ %s
 autocmd FileType ldif set commentstring=#\ %s
-
-" --- TagBar
-" toggle TagBar with F4
-nnoremap <silent> <F4> :TagbarToggle<CR>
-" set focus to TagBar when opening it
-let g:tagbar_autofocus = 1
 
 " --- NERDTree
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -247,7 +237,6 @@ let g:ale_linters = {
 let g:ale_python_flake8_options = '--ignore=E501'
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
-let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_error_str = 'ERROR'
 let g:ale_echo_msg_warning_str = 'WARNING'
 let g:ale_echo_msg_info_str = 'INFO'
