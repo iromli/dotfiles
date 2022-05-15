@@ -1,59 +1,61 @@
-snippet future "import __future__"
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-endsnippet
-
-snippet pdb "pdb"
+snippet pdb "pdb" b
 import pdb; pdb.set_trace()  # NOQA
 endsnippet
 
-snippet ifmain "ifmain" b
+snippet ifmain "main entrypoint" b
 if __name__ == "__main__":
 	${1:main()}$0
 endsnippet
 
 snippet from "from module import name" b
-from ${1:module} import ${2:Stuff}
+from ${1:module} import ${2:name}
 endsnippet
 
-##########################
-# Try / Except / Finally #
-##########################
-snippet try "Try / Except" b
+snippet try "try - except clause" b
 try:
 	${1:pass}
 except ${2:Exception} as ${3:exc}:
 	${4:raise $3}
 endsnippet
 
-snippet try "Try / Except / Else" b
-try:
+snippet anno "__future__ annotations" b
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+	# imported objects for function type hint, completion, etc.
+	# these won't be executed in runtime
 	${1:pass}
-except ${2:Exception} as ${3:exc}:
-	${4:raise $3}
-else:
-	${5:pass}
 endsnippet
 
-snippet try "Try / Except / Finally" b
-try:
-	${1:pass}
-except ${2:Exception} as ${3:exc}:
-	${4:raise $3}
-finally:
-	${5:pass}
+snippet def "def func()" b
+def ${1:name}(${2:}):
+	${3:pass}
 endsnippet
 
-snippet try "Try / Except / Else / Finally" b
-try:
-	${1:pass}
-except${2: ${3:Exception} as ${4:exc}}:
-	${5:raise}
-else:
-	${6:pass}
-finally:
-	${7:pass}
+snippet class "class" b
+class ${1:name}:
+	def __init__(self${2:}):
+		${3:pass}
+endsnippet
+
+snippet cdef "def func(self)" b
+def ${1:name}(self${2:}):
+	${3:pass}
+endsnippet
+
+snippet prop "@property" b
+@property
+def ${1:name}(self):
+	${2:pass}
+endsnippet
+
+snippet fread "with open(filename)" b
+with open(${1:filename}${2}) as ${3:fr}:
+	contents = $3.read()
+endsnippet
+
+snippet fwrite "with open(filename)" b
+with open(${1:filename}, "${2:w}") as ${3:fw}:
+	$3.write(${4:contents})
 endsnippet
