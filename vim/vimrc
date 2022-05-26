@@ -1,8 +1,11 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 " Be iMproved
 set nocompatible
 
 " --- dein
-set rtp+=~/.dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin('~/.dein')
 
@@ -15,9 +18,9 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('kien/rainbow_parentheses.vim')
 call dein#add('tpope/vim-commentary')
 call dein#add('simnalamburt/vim-mundo')
-call dein#add('scrooloose/nerdtree')
+call dein#add('preservim/nerdtree')
 call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('Lokaltog/vim-easymotion')
+call dein#add('easymotion/vim-easymotion')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('godlygeek/tabular')
 call dein#add('chrisbra/Recover.vim')
@@ -47,7 +50,9 @@ call dein#add('ziglang/zig.vim')
 call dein#add('Tetralux/odin.vim')
 call dein#add('elixir-editors/vim-elixir')
 call dein#add('jjo/vim-cue')
-call dein#add('dense-analysis/ale')
+" call dein#add('dense-analysis/ale')
+call dein#add('junegunn/vader.vim')
+cal dein#add('iromli/ale', {'rev': 'actionlint-opts'})
 call dein#add('neoclide/coc.nvim', {'merged': 0})
 
 call dein#end()
@@ -56,7 +61,7 @@ filetype plugin indent on
 syntax on
 
 " Theming
-if $TMUX != '' && $TERM != 'screen-256color'
+if $TMUX !=# '' && $TERM !=# 'screen-256color'
     set term=screen-256color
 endif
 
@@ -72,7 +77,6 @@ set number
 set ruler
 set list
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,eol:¬
-set encoding=utf-8
 set wrap
 set linebreak
 set showcmd
@@ -88,7 +92,7 @@ set smarttab
 set autoindent
 set smartindent
 set shiftround
-set noeol
+set noendofline
 set backspace=indent,eol,start
 
 " buffer options
@@ -170,8 +174,11 @@ autocmd FileType ldif set commentstring=#\ %s
 nnoremap <F2> :NERDTreeToggle<CR>
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
-let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', '^dist$', '^build$', '^__pycache__$']
+let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', '^__pycache__$']
 let NERDTreeHightlightCursorline=1
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " --- Mundo
 set undofile
@@ -198,7 +205,7 @@ cnoreabbrev Ack Ack!
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
 
-if executable("rg")
+if executable('rg')
    set grepprg=rg\ --color=never
 
   " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -234,8 +241,13 @@ let g:ale_disable_lsp = 1
 " let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \   'python': ['flake8', 'bandit'],
+\   'vim': ['vint'],
 \}
-let g:ale_python_flake8_options = '--ignore=E501'
+let g:ale_python_flake8_options = '--ignore=E501,A003'
+let g:ale_python_bandit_options = '--skip=B101'
+let g:ale_yaml_actionlint_options = '-shellcheck= -pyflakes= --no-color'
+" use actionlint for GitHub workflow
+au BufRead,BufNewFile */.github/*/*.y{,a}ml let b:ale_linters = {'yaml': ['actionlint']}
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_echo_msg_error_str = 'ERROR'
@@ -257,7 +269,7 @@ set updatetime=300
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " inoremap <silent><expr> <Tab>

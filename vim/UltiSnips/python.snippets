@@ -59,3 +59,8 @@ snippet fwrite "with open(filename)" b
 with open(${1:filename}, "${2:w}") as ${3:fw}:
 	$3.write(${4:contents})
 endsnippet
+
+snippet suppress "contextlib suppress" b
+with contextlib.suppress($1):
+	${2:pass}
+endsnippet

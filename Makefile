@@ -27,10 +27,12 @@ install-vim:
 	mkdir -p ~/.vim
 	rm -rf ~/.vim/pack ~/.vim/UltiSnips
 	rm -rf ~/.vimrc
+	rm -rf ~/.vintrc.yaml
 	git submodule update
 	ln -sf `pwd`/vim/UltiSnips ~/.vim/
 	ln -sf `pwd`/vim/pack ~/.vim/
 	ln -sf `pwd`/vim/vimrc ~/.vimrc
+	ln -sf `pwd`/vim/vintrc.yaml ~/.vintrc.yaml
 	ln -sf `pwd`/vim/coc-settings.json ~/.vim/coc-settings.json
 	mkdir -p ~/.config/coc/extensions
 	ln -sf `pwd`/vim/coc-package.json ~/.config/coc/extensions/package.json
