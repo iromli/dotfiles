@@ -52,7 +52,7 @@ call dein#add('elixir-editors/vim-elixir')
 call dein#add('jjo/vim-cue')
 " call dein#add('dense-analysis/ale')
 call dein#add('junegunn/vader.vim')
-cal dein#add('iromli/ale', {'rev': 'actionlint-opts'})
+call dein#add('iromli/ale', {'rev': 'actionlint-opts'})
 call dein#add('neoclide/coc.nvim', {'merged': 0})
 
 call dein#end()
@@ -117,26 +117,33 @@ set noswapfile
 set nobackup
 set nowritebackup
 
-au BufRead,BufNewFile *.jinja2 set ft=jinja
+augroup codestyle
+  au BufRead,BufNewFile *.jinja2 set ft=jinja
 
-" ensure these filetypes always use tabs instead of spaces
-au FileType make,go,java setl noexpandtab
+  " ensure these filetypes always use tabs instead of spaces
+  au FileType make,go,java setl noexpandtab
 
-" set 2-spaces indentation for the following filetypes
-au FileType yaml,vim,gleam,elixir setl softtabstop=2 shiftwidth=2 tabstop=2
+  " set 2-spaces indentation for the following filetypes
+  au FileType yaml,vim,gleam,elixir setl softtabstop=2 shiftwidth=2 tabstop=2
+
+  au FileType python match OverLength /\%81v.\+/
+
+  au FileType rust match OverLength /\%99v.\+/
+augroup END
 
 " Folding
 set foldmethod=indent
 set nofoldenable
 
-" trailing whitespace
-autocmd BufWritePre * :silent! %s/\s\+$//e
-autocmd BufWritePre * :silent! %s#\($\n\)\+\%$##
+augroup whitespace
+  " trailing whitespace
+  autocmd BufWritePre * :silent! %s/\s\+$//e
+  autocmd BufWritePre * :silent! %s#\($\n\)\+\%$##
+augroup END
 
 " Highlight the overflow text
 " http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
 highlight OverLength ctermbg=red ctermfg=white
-au FileType python match OverLength /\%81v.\+/
 
 " Toggles paste mode (http://is.gd/FxlJAH)
 set pastetoggle=<F9>
@@ -149,10 +156,12 @@ let g:AutoPairsShortcutFastWrap = '<C-f>'
 let g:AutoPairsMapCR = 0
 
 " --- Rainbow Parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+augroup rainbow
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
+augroup END
 
 " --- Airline
 let g:airline_theme='dark'
@@ -166,19 +175,23 @@ let g:airline#extensions#ale#enabled = 1
 let g:user_emmet_leader_key='<C-e>'
 
 " --- Commentary
-autocmd FileType nginx set commentstring=#\ %s
-autocmd FileType dockerfile set commentstring=#\ %s
-autocmd FileType ldif set commentstring=#\ %s
+augroup commentary
+  autocmd FileType nginx set commentstring=#\ %s
+  autocmd FileType dockerfile set commentstring=#\ %s
+  autocmd FileType ldif set commentstring=#\ %s
+augroup END
 
 " --- NERDTree
 nnoremap <F2> :NERDTreeToggle<CR>
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
 let NERDTreeIgnore = ['\.pyc$', '\.egg-info$', '^__pycache__$']
 let NERDTreeHightlightCursorline=1
 
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+augroup nerdtree
+  autocmd vimenter * if !argc() | NERDTree | endif
+  autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
+  " Exit Vim if NERDTree is the only window remaining in the only tab.
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+augroup END
 
 " --- Mundo
 set undofile
@@ -230,7 +243,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " --- Rust
-au FileType rust match OverLength /\%99v.\+/
 let g:rustfmt_autosave = 1
 
 " --- Zig
@@ -246,8 +258,12 @@ let g:ale_linters = {
 let g:ale_python_flake8_options = '--ignore=E501,A003'
 let g:ale_python_bandit_options = '--skip=B101'
 let g:ale_yaml_actionlint_options = '-shellcheck= -pyflakes= --no-color'
-" use actionlint for GitHub workflow
-au BufRead,BufNewFile */.github/*/*.y{,a}ml let b:ale_linters = {'yaml': ['actionlint']}
+
+augroup actionlint
+  " use actionlint for GitHub workflow
+  au BufRead,BufNewFile */.github/*/*.y{,a}ml let b:ale_linters = {'yaml': ['actionlint']}
+augroup END
+
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 let g:ale_echo_msg_error_str = 'ERROR'
