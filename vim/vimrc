@@ -250,14 +250,20 @@ let g:zig_fmt_autosave = 1
 " --- ALE
 let g:ale_disable_lsp = 1
 " let g:ale_completion_enabled = 1
+
 let g:ale_linters = {
 \   'python': ['flake8', 'bandit'],
 \   'vim': ['vint'],
 \   'sh': ['shellcheck'],
+\   'dockerfile': ['hadolint'],
 \}
 let g:ale_python_flake8_options = '--ignore=E501,A003'
 let g:ale_python_bandit_options = '--skip=B101'
 let g:ale_yaml_actionlint_options = '-shellcheck= -pyflakes= --no-color'
+
+augroup docker
+  au FileType Dockerfile set filetype=dockerfile
+augroup END
 
 augroup actionlint
   " use actionlint for GitHub workflow
