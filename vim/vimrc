@@ -50,9 +50,8 @@ call dein#add('ziglang/zig.vim')
 call dein#add('Tetralux/odin.vim')
 call dein#add('elixir-editors/vim-elixir')
 call dein#add('jjo/vim-cue')
-" call dein#add('dense-analysis/ale')
 call dein#add('junegunn/vader.vim')
-call dein#add('iromli/ale', {'rev': 'actionlint-opts'})
+call dein#add('dense-analysis/ale')
 call dein#add('neoclide/coc.nvim', {'merged': 0})
 
 call dein#end()
@@ -254,6 +253,7 @@ let g:ale_disable_lsp = 1
 let g:ale_linters = {
 \   'python': ['flake8', 'bandit'],
 \   'vim': ['vint'],
+\   'sh': ['shellcheck'],
 \}
 let g:ale_python_flake8_options = '--ignore=E501,A003'
 let g:ale_python_bandit_options = '--skip=B101'
