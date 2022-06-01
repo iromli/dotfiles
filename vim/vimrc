@@ -256,6 +256,7 @@ let g:ale_linters = {
 \   'vim': ['vint'],
 \   'sh': ['shellcheck'],
 \   'dockerfile': ['hadolint'],
+\   'make': ['checkmake'],
 \}
 let g:ale_python_flake8_options = '--ignore=E501,A003'
 let g:ale_python_bandit_options = '--skip=B101'
