@@ -22,7 +22,7 @@ snippet anno "__future__ annotations" b
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
 	# imported objects for function type hint, completion, etc.
 	# these won't be executed in runtime
 	${1:pass}
