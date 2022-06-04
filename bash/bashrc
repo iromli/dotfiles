@@ -19,7 +19,7 @@ if [[ -n "$PS1" ]]; then
         export PYTHONSTARTUP=$HOME/.python-startup.py
     fi
 
-    . $BASH_HOME/init.sh
+    . "$BASH_HOME/init.sh"
 
     # krew
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -34,15 +34,38 @@ if [[ -n "$PS1" ]]; then
 
     export GO111MODULE=on
 
-    export PATH="/opt/zig:/opt/odin:$PATH"
+    export PATH="/opt/zig:$PATH"
 
-    eval "$(gh completion -s bash)"
+    if [[ -n $(command -v gh) ]]; then
+        eval "$(gh completion -s bash)"
+    fi
 
-    # complete -C /home/iromli/.local/bin/terraform terraform
+    for cmd in cue kube-linter grype kubectl; do
+        eval "$($cmd completion bash)"
+    done
+
+    if [[ -n $(command -v terraform) ]]; then
+        complete -C terraform terraform
+    fi
 
     . "$HOME/.asdf/asdf.sh"
     . "$HOME/.asdf/completions/asdf.bash"
 
-    . $(asdf where python)/bin/virtualenvwrapper.sh
+    . "$(asdf where python)/bin/virtualenvwrapper.sh"
 
+    if [[ -n $(command -v pipx) ]]; then
+        eval "$(register-python-argcomplete pipx)"
+    fi
+
+    if [[ -n $(command -v pip) ]]; then
+        eval "$(pip completion --bash)"
+    fi
+
+    if [[ -n $(command -v rustup) ]]; then
+        eval "$(rustup completions bash)"
+    fi
+
+    if [[ -n $(rustc) ]]; then
+        . "$(rustc --print sysroot)/etc/bash_completion.d/cargo"
+    fi
 fi
