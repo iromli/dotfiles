@@ -35,8 +35,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Load plugin libraries
-for lib in $BASH_HOME/completions/*.sh; do
-    source $lib
+for lib in "$BASH_HOME"/completions/*.sh; do
+    source "$lib"
 done
 
 #========
@@ -77,7 +77,7 @@ esac
 
 # Load theme
 [[ -f $BASH_HOME/themes/$BASH_THEME.sh ]] && \
-    source $BASH_HOME/themes/$BASH_THEME.sh
+    source "$BASH_HOME/themes/$BASH_THEME.sh"
 
 #========
 # Aliases
@@ -85,7 +85,12 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    if [ -f ~/.dircolors ]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
+
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -100,13 +105,13 @@ fi
 alias sudo='sudo '
 
 # gh is best aliased as Git
-if [[ ! -z `command -v git` && ! -z `command -v hub` ]]; then
+if [[ -n $(command -v git) && -n $(command -v hub) ]]; then
     eval "$(hub alias -s)"
 fi
 
 # Force `tmux` to assume the terminal supports 256 colours.
-if [[ ! -z `command -v tmux` ]]; then
-    alias="tmux -2"
+if [[ -n $(command -v tmux) ]]; then
+    alias tmux="tmux -2"
 fi
 
 # Sometime the cursor freezes, so bring back the cursor alive
@@ -136,43 +141,51 @@ alias hgrep='history|grep '
 
 # create directory and go the newly created directory
 mkcd() {
+    # shellcheck disable=SC2086
     : ${1:?"A non-empty argument is required"}
-    mkdir -p "$1" && cd "$1"
+    mkdir -p "$1" && cd "$1" || exit
 }
 
 # get architecture name
 arch-name() {
-    [[ `uname -m` == 'x86_64' ]] && echo 'x64' || echo 'x86'
+    [[ $(uname -m) == 'x86_64' ]] && echo 'x64' || echo 'x86'
 }
 
 # get OS release name
 os-name() {
-    echo "`kernel_name` `head -1 /etc/issue`" | sed 's/\\.//g'
+    issue=$(head -1 /etc/issue)
+    name=$(kernel_name)
+    echo "$name $issue" | sed 's/\\.//g'
 }
 
 # remove all untagged docker images
 dock-rmi-untagged() {
+    # shellcheck disable=SC2046
     docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 }
 
 # remove all containers (forced)
 dock-rm-all() {
+    # shellcheck disable=SC2046
     docker rm -f $(docker ps -aq)
 }
 
 # remove all exited containers (forced)
 dock-rm-exited() {
+    # shellcheck disable=SC2046
     docker rm -f $(docker ps -qf status=exited)
 }
 
 dock-get-ip() {
+    # shellcheck disable=SC2086
     : ${1:?"container name or ID is required"}
-    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $1
+    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$1"
 }
 
 fix-ssh-access() {
+    # shellcheck disable=SC2086
     : ${1:?"IP or hostname is required"}
-    ssh-keygen -f "${HOME}/.ssh/known_hosts" -R ${1}
+    ssh-keygen -f "${HOME}/.ssh/known_hosts" -R "${1}"
 }
 
 clean-pyc() {
