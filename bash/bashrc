@@ -24,9 +24,6 @@ if [[ -n "$PS1" ]]; then
     # krew
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-    # codeql
-    # export PATH="$HOME/.codeql/codeql:$PATH"
-
     export PATH="$HOME/.gobin:$PATH"
 
     # docker
