@@ -257,9 +257,15 @@ let g:ale_linters = {
 \   'dockerfile': ['hadolint'],
 \   'make': ['checkmake'],
 \}
+
+ let g:ale_fixers = {
+ \   'elixir': ['mix_format'],
+ \}
+
 let g:ale_python_flake8_options = '--ignore=E501,A003'
 let g:ale_python_bandit_options = '--skip=B101'
 let g:ale_yaml_actionlint_options = '-shellcheck= -pyflakes= --no-color'
+let g:ale_fix_on_save = 1
 
 augroup docker
   au FileType Dockerfile set filetype=dockerfile
@@ -294,11 +300,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" inoremap <silent><expr> <Tab>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<Tab>" :
-"       \ coc#refresh()
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -310,20 +311,11 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:coc_snippet_next = '<tab>'
 
-" " Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" function! s:show_documentation()
-"   if CocAction('hasProvider', 'hover')
-"     call CocActionAsync('doHover')
-"   else
-"     call feedkeys('K', 'in')
-"   endif
-" endfunction
-
 let g:go_def_mapping_enabled = 0
 
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
