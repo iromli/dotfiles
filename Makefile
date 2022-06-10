@@ -1,3 +1,5 @@
+.PHONY: test clean all install install-bash install-python install-tmux install-vim
+
 install: install-bash install-python install-tmux install-vim
 
 install-bash:
