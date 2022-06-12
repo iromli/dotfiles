@@ -10,6 +10,7 @@ if [[ -n "$PS1" ]]; then
     export BASH_THEME='equator'
     export TERM="xterm-256color"
     export PATH=$HOME/.local/bin:$PATH
+    # export BASH_COMPLETION_USER_DIR=$BASH_HOME/completions
 
     # Pythons!
     export IPYTHONDIR=$HOME/.ipython
@@ -37,7 +38,7 @@ if [[ -n "$PS1" ]]; then
         eval "$(gh completion -s bash)"
     fi
 
-    for cmd in cue kube-linter grype kubectl; do
+    for cmd in cue kube-linter grype kubectl minikube; do
         if [[ -n $(command -v $cmd) ]]; then
             eval "$($cmd completion bash)"
         fi
