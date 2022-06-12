@@ -27,6 +27,7 @@ call dein#add('chrisbra/Recover.vim')
 call dein#add('mileszs/ack.vim')
 call dein#add('Yggdroot/indentLine')
 call dein#add('kana/vim-scratch')
+call dein#add('editorconfig/editorconfig-vim')
 
 call dein#add('tpope/vim-haml')
 call dein#add('mattn/emmet-vim')
@@ -319,3 +320,6 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
+
+" --- editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
