@@ -4,6 +4,8 @@ scriptencoding utf-8
 " Be iMproved
 set nocompatible
 
+let g:polyglot_disabled = ['cue']
+
 " --- dein
 set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
 
@@ -28,31 +30,42 @@ call dein#add('mileszs/ack.vim')
 call dein#add('Yggdroot/indentLine')
 call dein#add('kana/vim-scratch')
 call dein#add('editorconfig/editorconfig-vim')
-
-call dein#add('tpope/vim-haml')
 call dein#add('mattn/emmet-vim')
+
 call dein#add('mitsuhiko/vim-jinja')
-call dein#add('mitsuhiko/vim-rst')
-call dein#add('ekalinin/dockerfile.vim')
-call dein#add('vim-scripts/po.vim')
-call dein#add('cespare/vim-toml')
-call dein#add('hashivim/vim-terraform')
-call dein#add('fatih/vim-go')
-call dein#add('rust-lang/rust.vim')
-call dein#add('pangloss/vim-javascript')
-call dein#add('othree/html5.vim')
-call dein#add('chr4/nginx.vim')
-call dein#add('tpope/vim-markdown')
-call dein#add('MaxMEllon/vim-jsx-pretty')
-call dein#add('leafgarland/typescript-vim')
-call dein#add('udalov/kotlin-vim')
-call dein#add('gleam-lang/gleam.vim')
-call dein#add('ziglang/zig.vim')
-call dein#add('elixir-editors/vim-elixir')
-call dein#add('jjo/vim-cue')
 call dein#add('junegunn/vader.vim')
+call dein#add('vim-scripts/po.vim')
+
+" call dein#add('ekalinin/dockerfile.vim')
+" call dein#add('cespare/vim-toml')
+" call dein#add('hashivim/vim-terraform')
+" call dein#add('fatih/vim-go')
+" call dein#add('rust-lang/rust.vim')
+" call dein#add('pangloss/vim-javascript')
+" call dein#add('othree/html5.vim')
+" call dein#add('chr4/nginx.vim')
+" call dein#add('MaxMEllon/vim-jsx-pretty')
+" call dein#add('udalov/kotlin-vim')
+" call dein#add('gleam-lang/gleam.vim')
+" call dein#add('ziglang/zig.vim')
+" call dein#add('elixir-editors/vim-elixir')
+" call dein#add('tpope/vim-haml')
+
+" call dein#add('tpope/vim-markdown')
+" call dein#add('plasticboy/vim-markdown')
+
+" call dein#add('leafgarland/typescript-vim')
+" call dein#add('HerringtonDarkholme/yats.vim')
+
+" call dein#add('mitsuhiko/vim-rst')
+" call dein#add('marshallward/vim-restructuredtext')
+
+call dein#add('jjo/vim-cue')
 call dein#add('dense-analysis/ale')
-call dein#add('neoclide/coc.nvim', {'merged': 0})
+" call dein#add('neoclide/coc.nvim', {'merged': 0})
+call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release'  })
+
+call dein#add('sheerun/vim-polyglot')
 
 call dein#end()
 
