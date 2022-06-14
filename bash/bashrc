@@ -61,7 +61,7 @@ if [[ -n "$PS1" ]]; then
         eval "$(pip completion --bash)"
     fi
 
-    for cmd in rustup deno; do
+    for cmd in rustup deno poetry; do
         if [[ -n $(command -v $cmd) ]]; then
             eval "$($cmd completions bash)"
         fi
