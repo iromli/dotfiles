@@ -44,9 +44,11 @@ if [[ -n "$PS1" ]]; then
         fi
     done
 
-    if [[ -n $(command -v terraform) ]]; then
-        complete -C terraform terraform
-    fi
+    for cmd in terraform nomad; do
+        if [[ -n $(command -v $cmd) ]]; then
+            complete -C $cmd $cmd
+        fi
+    done
 
     . "$HOME/.asdf/asdf.sh"
     . "$HOME/.asdf/completions/asdf.bash"
