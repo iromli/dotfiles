@@ -104,9 +104,15 @@ fi
 # http://wiki.archlinux.org/index.php/Sudo#Passing_aliases
 alias sudo='sudo '
 
-# gh is best aliased as Git
-if [[ -n $(command -v git) && -n $(command -v hub) ]]; then
-    eval "$(hub alias -s)"
+if [[ -n $(command -v git) ]]; then
+    # hub is best aliased as git
+    if [[ -n $(command -v hub) ]]; then
+        eval "$(hub alias -s)"
+    fi
+
+    git config --global alias.df diff
+    git config --global alias.st status
+    git config --global alias.fo 'fetch origin'
 fi
 
 # Force `tmux` to assume the terminal supports 256 colours.
