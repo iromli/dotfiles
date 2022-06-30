@@ -148,9 +148,11 @@ set foldmethod=indent
 set nofoldenable
 
 augroup whitespace
-  " trailing whitespace
-  autocmd BufWritePre * :silent! %s/\s\+$//e
-  autocmd BufWritePre * :silent! %s#\($\n\)\+\%$##
+  if &filetype !=# 'markdown'
+    " trailing whitespace
+    autocmd BufWritePre * :silent! %s/\s\+$//e
+    autocmd BufWritePre * :silent! %s#\($\n\)\+\%$##
+  endif
 augroup END
 
 " Highlight the overflow text
