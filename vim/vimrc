@@ -51,20 +51,13 @@ call dein#add('vim-scripts/po.vim')
 " call dein#add('elixir-editors/vim-elixir')
 " call dein#add('tpope/vim-haml')
 
-" call dein#add('tpope/vim-markdown')
 " call dein#add('plasticboy/vim-markdown')
-
-" call dein#add('leafgarland/typescript-vim')
 " call dein#add('HerringtonDarkholme/yats.vim')
-
-" call dein#add('mitsuhiko/vim-rst')
 " call dein#add('marshallward/vim-restructuredtext')
 
 call dein#add('jjo/vim-cue')
 call dein#add('dense-analysis/ale')
-" call dein#add('neoclide/coc.nvim', {'merged': 0})
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release'  })
-
 call dein#add('sheerun/vim-polyglot')
 
 call dein#end()
