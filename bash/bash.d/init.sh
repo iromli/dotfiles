@@ -113,6 +113,7 @@ if [[ -n $(command -v git) ]]; then
     git config --global alias.df diff
     git config --global alias.st status
     git config --global alias.fo 'fetch origin'
+    git config --global alias.co checkout
 fi
 
 # Force `tmux` to assume the terminal supports 256 colours.
