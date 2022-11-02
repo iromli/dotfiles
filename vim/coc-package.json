@@ -11,5 +11,7 @@
     "coc-snippets": ">=3.0.9",
     "coc-tsserver": ">=1.10.3",
     "coc-zig": ">=0.6.1"
-  }
+  },
+  "disabled": [],
+  "locked": []
 }
