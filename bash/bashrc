@@ -50,13 +50,15 @@ if [[ -n "$PS1" ]]; then
         fi
     done
 
-    . "$HOME/.asdf/asdf.sh"
-    . "$HOME/.asdf/completions/asdf.bash"
+    if [[ -n $(command -v rtx) ]]; then
+        eval "$(rtx activate bash)"
+        eval "$(rtx complete --shell bash)"
+    fi
 
     # lazy load virtualenvwrapper
     # shellcheck disable=SC2155
-    export VIRTUALENVWRAPPER_SCRIPT=$(asdf which virtualenvwrapper.sh)
-    . "$(asdf where python)/bin/virtualenvwrapper_lazy.sh"
+    export VIRTUALENVWRAPPER_SCRIPT=$(which virtualenvwrapper.sh)
+    . "$(which virtualenvwrapper_lazy.sh)"
 
     if [[ -n $(command -v pipx) ]]; then
         eval "$(register-python-argcomplete pipx)"
