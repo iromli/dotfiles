@@ -56,9 +56,11 @@ if [[ -n "$PS1" ]]; then
     fi
 
     # lazy load virtualenvwrapper
-    # shellcheck disable=SC2155
-    export VIRTUALENVWRAPPER_SCRIPT=$(which virtualenvwrapper.sh)
-    . "$(which virtualenvwrapper_lazy.sh)"
+    if [[ -n $(command -v virtualenvwrapper.sh) ]]; then
+        # shellcheck disable=SC2155
+        export VIRTUALENVWRAPPER_SCRIPT=$(which virtualenvwrapper.sh)
+        . "$(which virtualenvwrapper_lazy.sh)"
+    fi
 
     if [[ -n $(command -v pipx) ]]; then
         eval "$(register-python-argcomplete pipx)"
