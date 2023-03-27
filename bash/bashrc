@@ -50,6 +50,7 @@ if [[ -n "$PS1" ]]; then
 
     if [[ -n $(command -v rtx) ]]; then
         eval "$(rtx activate bash)"
+        eval "$(rtx hook-env)"
         eval "$(rtx complete --shell bash)"
     fi
 
