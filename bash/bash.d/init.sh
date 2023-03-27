@@ -198,3 +198,7 @@ fix-ssh-access() {
 clean-pyc() {
     find . -name "*.pyc" -exec rm -f {} \;
 }
+
+drop-caches() {
+    echo 3 | sudo tee /proc/sys/vm/drop_caches
+}
