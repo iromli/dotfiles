@@ -32,8 +32,6 @@ if [[ -n "$PS1" ]]; then
 
     export GO111MODULE=on
 
-    export PATH="/opt/zig:$PATH"
-
     if [[ -n $(command -v gh) ]]; then
         eval "$(gh completion -s bash)"
     fi
@@ -78,5 +76,9 @@ if [[ -n "$PS1" ]]; then
 
     if [[ -n $(command -v rustc) ]]; then
         . "$(rustc --print sysroot)/etc/bash_completion.d/cargo"
+    fi
+
+    if [[ -n $(command -v nerdctl) ]]; then
+        eval "$(nerdctl completion bash)"
     fi
 fi
