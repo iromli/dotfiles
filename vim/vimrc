@@ -14,7 +14,6 @@ call dein#begin('~/.dein')
 call dein#add('~/.dein/repos/github.com/Shougo/dein.vim')
 
 call dein#add('airblade/vim-gitgutter')
-call dein#add('ryanoasis/vim-devicons')
 call dein#add('bling/vim-airline')
 call dein#add('tpope/vim-fugitive')
 call dein#add('kien/rainbow_parentheses.vim')
@@ -59,6 +58,7 @@ call dein#add('jjo/vim-cue')
 call dein#add('dense-analysis/ale')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release'  })
 call dein#add('sheerun/vim-polyglot')
+call dein#add('ryanoasis/vim-devicons')
 
 call dein#end()
 
