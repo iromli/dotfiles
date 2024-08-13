@@ -253,6 +253,8 @@ nnoremap <C-H> <C-W><C-H>
 
 " --- Rust
 let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
 
 " --- Zig
 let g:zig_fmt_autosave = 1
@@ -267,6 +269,7 @@ let g:ale_linters = {
 \   'sh': ['shellcheck'],
 \   'dockerfile': ['hadolint'],
 \   'make': ['checkmake'],
+\   'rust': ['analyzer', 'rustc'],
 \}
 
  let g:ale_fixers = {
