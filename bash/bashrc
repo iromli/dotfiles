@@ -48,10 +48,14 @@ if [[ -n "$PS1" ]]; then
         fi
     done
 
-    if [[ -n $(command -v rtx) ]]; then
-        eval "$(rtx activate bash)"
-        eval "$(rtx hook-env)"
-        eval "$(rtx complete --shell bash)"
+    if [[ -z $(command -v mise) ]]; then
+        alias mise=rtx
+    fi
+
+    if [[ -n $(command -v mise) ]]; then
+        eval "$(mise activate bash)"
+        eval "$(mise hook-env)"
+        eval "$(mise complete --shell bash)"
     fi
 
     # lazy load virtualenvwrapper
