@@ -79,7 +79,19 @@ if [[ -n "$PS1" ]]; then
         . "$(rustc --print sysroot)/etc/bash_completion.d/cargo"
     fi
 
-    if [[ -n $(command -v nerdctl) ]]; then
-        eval "$(nerdctl completion bash)"
+    for cmd in nerdctl eksctl; do
+        if [[ -n $(command -v $cmd) ]]; then
+            eval "$($cmd completion bash)"
+        fi
+    done
+
+    if [[ -n $(command -v erd) ]]; then
+        eval "$(erd --completions bash)"
     fi
+
+    # The next line updates PATH for the Google Cloud SDK.
+    if [ -f '/home/iromli/google-cloud-sdk/path.bash.inc' ]; then . '/home/iromli/google-cloud-sdk/path.bash.inc'; fi
+
+    # The next line enables shell command completion for gcloud.
+    if [ -f '/home/iromli/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iromli/google-cloud-sdk/completion.bash.inc'; fi
 fi
